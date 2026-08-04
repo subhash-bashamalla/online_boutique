@@ -11,6 +11,8 @@ services:
     container_name: ad_service
     ports:
       - "9555:9555"
+      env:
+        
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -220,3 +222,20 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - online-boutique-network
+    volumes:
+      - redis-data:/data
+
+
+
+volumes:
+  - redis-data
