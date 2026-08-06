@@ -11,8 +11,8 @@ services:
     container_name: ad_service
     ports:
       - "9555:9555"
-      env:
-        
+    environment:
+      PORT: "9555" 
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -32,6 +32,8 @@ services:
     container_name: cart_service
     ports:
       - "7070:7070"
+    environment:
+      REDIS_ADDR: "cartservice:9555"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -51,6 +53,14 @@ services:
     container_name: checkout_service
     ports:
       - "5050:5050"
+    environment:
+      PORT: "5050"
+      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
+      SHIPPING_SERVICE_ADDR: "shippingservice:50051"
+      PAYMENT_SERVICE_ADDR: "paymentservice:50051"
+      EMAIL_SERVICE_ADDR: "emailservice:5000"
+      CART_SERVICE_ADDR: "cartservice:7070"
+      CURRENCY_SERVICE_ADDR: "currencyservice:7000"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -69,6 +79,9 @@ services:
     container_name: currency_service
     ports:
       - "7000:7000"
+    environment:
+      PORT: "7000"
+      DISABLE_PROFILER: "1"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -87,6 +100,9 @@ services:
     container_name: email_service
     ports:
       - "8080:8080"
+    environment:
+      PORT: "8080"
+      DISABLE_PROFILER: "1"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -105,6 +121,17 @@ services:
     container_name: frontend
     ports:
       - "8080:8080"
+    environment:
+      PORT: "8080"
+      PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
+      SHIPPING_SERVICE_ADDR: "shippingservice:50051"
+      RECOMMENDATION_SERVICE_ADDR: "paymentservice:8080"
+      CHECKOUT_SERVICE_ADDR: "checkoutservice:5050"
+      CART_SERVICE_ADDR: "cartservice:7070"
+      CURRENCY_SERVICE_ADDR: "currencyservice:7000"
+      AD_SERVICE_ADDR: "adservice:9555"
+      SHOPPING_ASSISTANT_SERVICE_ADDR: "shoppingassistantservice:80"
+      ENABLE_PROFILER: "0"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -123,6 +150,8 @@ services:
     container_name: load_generator
     ports:
       - "9555:9555"
+    environment:
+      FRONTEND_ADDR: "frontend:80"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -141,6 +170,9 @@ services:
     container_name: payment_service
     ports:
       - "50051:50051"
+    environment:
+      PORT: "50051"
+      DISABLE_PROFILER: "1"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -159,6 +191,9 @@ services:
     container_name: productcatalog_service
     ports:
       - "3550:3550"
+    environment:
+      PORT: "3550"
+      DISABLE_PROFILER: "1"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -177,6 +212,10 @@ services:
     container_name: recommendation_service
     ports:
       - "8080:8080"
+    environment:
+      PORT: "8080"
+      DISABLE_PROFILER: "1"
+      PRODUCT_CATALOG_SERVICE: "productcatalogservice:3550"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -195,6 +234,9 @@ services:
     container_name: shipping_service
     ports:
       - "50051:50051"
+    environment:
+      PORT: "50051"
+      DISABLE_PROFILER: "1"
     networks:
       - online-boutique-network
     restart: unless-stopped
