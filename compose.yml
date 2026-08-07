@@ -33,7 +33,7 @@ services:
     ports:
       - "7070:7070"
     environment:
-      REDIS_ADDR: "cartservice:9555"
+      REDIS_ADDR: "cartservice:6379"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -125,12 +125,11 @@ services:
       PORT: "8080"
       PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
       SHIPPING_SERVICE_ADDR: "shippingservice:50051"
-      RECOMMENDATION_SERVICE_ADDR: "paymentservice:8080"
+      RECOMMENDATION_SERVICE_ADDR: "recommendationservice:8080"
       CHECKOUT_SERVICE_ADDR: "checkoutservice:5050"
       CART_SERVICE_ADDR: "cartservice:7070"
       CURRENCY_SERVICE_ADDR: "currencyservice:7000"
       AD_SERVICE_ADDR: "adservice:9555"
-      SHOPPING_ASSISTANT_SERVICE_ADDR: "shoppingassistantservice:80"
       ENABLE_PROFILER: "0"
     networks:
       - online-boutique-network
@@ -151,7 +150,7 @@ services:
     ports:
       - "9555:9555"
     environment:
-      FRONTEND_ADDR: "frontend:80"
+      FRONTEND_ADDR: "frontend:8080"
     networks:
       - online-boutique-network
     restart: unless-stopped
