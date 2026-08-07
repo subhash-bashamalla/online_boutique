@@ -37,14 +37,7 @@ services:
     networks:
       - online-boutique-network
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "7070"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-
-
+    
 
   checkoutservice:
     build:
@@ -64,12 +57,6 @@ services:
     networks:
       - online-boutique-network
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "5050"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
 
 
   currencyservice:
@@ -134,12 +121,6 @@ services:
     networks:
       - online-boutique-network
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "8080"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
 
 
   loadgenerator:
@@ -196,12 +177,6 @@ services:
     networks:
       - online-boutique-network
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "3550"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
 
 
   recommendationservice:
@@ -239,12 +214,7 @@ services:
     networks:
       - online-boutique-network
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "50051"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+    
 
 
   redis:
