@@ -33,7 +33,7 @@ services:
     ports:
       - "7070:7070"
     environment:
-      REDIS_ADDR: "cartservice:6379"
+      REDIS_ADDR: "redis:6379"
     networks:
       - online-boutique-network
     restart: unless-stopped
