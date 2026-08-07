@@ -37,6 +37,7 @@ FROM eclipse-temurin:25.0.3_9-jre-alpine@sha256:28db6fdf60e38945e43d840c0333aeae
 #     | tar xzv -C /opt/cprof && \
 #     rm -rf profiler_java_agent.tar.gz
 
+RUN apk add --no-cache netcat-openbsd
 WORKDIR /app
 COPY --from=builder /app .
 
