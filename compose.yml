@@ -81,7 +81,7 @@ services:
       - "7000:7000"
     environment:
       PORT: "7000"
-      DISABLE_PROFILER: "1"
+      DISABLE_PROFILER: "true"
     networks:
       - online-boutique-network
     restart: unless-stopped
@@ -172,7 +172,7 @@ services:
       - "50051:50051"
     environment:
       PORT: "50051"
-      DISABLE_PROFILER: "1"
+      DISABLE_PROFILER: "true"
     networks:
       - online-boutique-network
     restart: unless-stopped
