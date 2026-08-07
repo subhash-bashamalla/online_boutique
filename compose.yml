@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
     container_name: ad_service
     ports:
-      - "9555:9555"
+      - "9554:9555"
     environment:
       PORT: "9555" 
     networks:
