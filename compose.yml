@@ -168,7 +168,7 @@ services:
       dockerfile: Dockerfile
     container_name: payment_service
     ports:
-      - "50051:50051"
+      - "50052:50051"
     environment:
       PORT: "50051"
       DISABLE_PROFILER: "true"
