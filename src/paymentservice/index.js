@@ -18,6 +18,8 @@
 
 const logger = require('./logger')
 
+/*
+
 if (process.env.DISABLE_PROFILER) {
   logger.info("Profiler disabled.")
 } else {
@@ -29,6 +31,8 @@ if (process.env.DISABLE_PROFILER) {
     }
   });
 }
+
+*/
 
 
 if (process.env.ENABLE_TRACING == "1") {
