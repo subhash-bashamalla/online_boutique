@@ -99,9 +99,9 @@ services:
       dockerfile: Dockerfile
     container_name: email_service
     ports:
-      - "8080:8080"
+      - "8081:8080"
     environment:
-      PORT: "8080"
+      PORT: "8081"
       DISABLE_PROFILER: "1"
     networks:
       - online-boutique-network
@@ -211,9 +211,9 @@ services:
       dockerfile: Dockerfile
     container_name: recommendation_service
     ports:
-      - "8080:8080"
+      - "8082:8080"
     environment:
-      PORT: "8080"
+      PORT: "8082"
       DISABLE_PROFILER: "1"
       PRODUCT_CATALOG_SERVICE: "productcatalogservice:3550"
     networks:
